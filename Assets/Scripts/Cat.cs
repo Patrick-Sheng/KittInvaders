@@ -45,7 +45,8 @@ public class Cat : MonoBehaviour
         currentState = CatState.Friendly;
         ApplyState();
         // TODO: trigger cleanse animation/sound here
-        
+
+        ScoreManager.Instance.AddScore(1); // add this
     }
 
     private void ApplyState()
