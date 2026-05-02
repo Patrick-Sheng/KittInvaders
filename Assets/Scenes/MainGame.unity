@@ -15960,7 +15960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24145953d1a22b47bc73412c5f8aeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 1
+  maxTime: 3
   ghostPrefab: {fileID: 1811831747711065978, guid: 4ac7435a6cd0f3749bb9f8b586b553a6, type: 3}
 --- !u!4 &1909283805
 Transform:
