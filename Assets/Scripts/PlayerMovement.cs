@@ -29,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
   private void Update()
   {
     _moveInput = _inputActions.Player.Move.ReadValue<Vector2>();
+    if (_inputActions.Player.Cleanse.triggered)
+    {
+      FindFirstObjectByType<PlayerController>().PressCleanse();
+    }
   }
 
   private void FixedUpdate()

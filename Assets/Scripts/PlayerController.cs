@@ -17,13 +17,13 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    private void Update()
+    public void PressCleanse()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && fishCount >= fishRequired)
-        {
-            Debug.Log("Activating Cleanse!");
-            ActivateCleanse();
-        }
+      if (fishCount >= fishRequired)
+      {
+        Debug.Log("Activating Cleanse!");
+        ActivateCleanse();
+      }
     }
 
     public void ChangeHealth(int amount)

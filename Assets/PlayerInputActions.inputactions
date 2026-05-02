@@ -14,20 +14,18 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Cleanse",
+                    "type": "Button",
+                    "id": "8186bcc9-c744-410a-ac9b-a6fef337e689",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "865c735c-26b7-4cf4-ab57-bff0ac7ea30f",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "2D Vector",
                     "id": "01660b71-ab4a-49ae-8aef-5a784802bad8",
@@ -82,6 +80,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "a77c8e30-8143-4dec-a761-d80ed87b0d9a",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cleanse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
