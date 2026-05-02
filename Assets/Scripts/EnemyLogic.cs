@@ -21,7 +21,7 @@ public class EnemyLogic : MonoBehaviour
   {
     if (collision.gameObject.CompareTag("Player"))
     {
-      collision.gameObject.GetComponent<PlayerHealth>().ChangeHealth(-1);
+      collision.gameObject.GetComponent<PlayerController>().ChangeHealth(-1);
       Debug.Log("Player took damage");
     }
   }

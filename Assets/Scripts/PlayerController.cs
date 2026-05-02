@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
   private int currentHealth;
@@ -23,5 +23,10 @@ public class PlayerHealth : MonoBehaviour
   public void ChangeHealth(int changeBy)
   {
     currentHealth += changeBy;
+  }
+
+  public void CollectFish()
+  {
+    Debug.Log("Fish collected");
   }
 }
