@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private int currentHealth;
 
     [Header("Cleanse")]
-    [SerializeField] private int maxFish = 3;
+    [SerializeField] private int fishRequired = 5;
     [SerializeField] private float cleanseRadius = 3f;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private GameObject cleanseEffectPrefab;
@@ -16,17 +17,22 @@ public class PlayerController : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI fishText;
+    [SerializeField] private Image[] heartImages; // drag Heart1, Heart2, Heart3 in here
+    [SerializeField] private Sprite fullHeart;
+    [SerializeField] private Sprite emptyHeart;
 
     private void Start()
     {
         currentHealth = maxHealth;
         UpdateFishUI();
+        UpdateHealthUI();
     }
 
     public void PressCleanse()
     {
-        if (fishCount > 0)
+        if (fishCount >= fishRequired)
         {
+            Debug.Log("Activating Cleanse!");
             ActivateCleanse();
         }
     }
@@ -34,6 +40,8 @@ public class PlayerController : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // prevent going below 0 or above max
+        UpdateHealthUI();
         if (currentHealth <= 0)
         {
             // TODO: trigger game over
@@ -42,16 +50,14 @@ public class PlayerController : MonoBehaviour
 
     public void CollectFish()
     {
-        if (fishCount < maxFish)
-        {
-          fishCount++;
-          UpdateFishUI();
-        }
+        fishCount++;
+        UpdateFishUI();
+        Debug.Log($"Fish: {fishCount}/{fishRequired}");
     }
 
     private void ActivateCleanse()
     {
-        fishCount--;
+        fishCount -= fishRequired;
         UpdateFishUI();
 
         if (cleanseEffectPrefab != null)
@@ -70,7 +76,15 @@ public class PlayerController : MonoBehaviour
     private void UpdateFishUI()
     {
         if (fishText != null)
-            fishText.text = $"{fishCount}/{maxFish}";
+            fishText.text = "Fish: " + fishCount + "/" + fishRequired;
+    }
+
+    private void UpdateHealthUI()
+    {
+        for (int i = 0; i < heartImages.Length; i++)
+        {
+            heartImages[i].sprite = i < currentHealth ? fullHeart : emptyHeart;
+        }
     }
 
     private void OnDrawGizmosSelected()
