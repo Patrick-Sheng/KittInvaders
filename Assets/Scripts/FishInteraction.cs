@@ -7,7 +7,6 @@ public class FishInteraction : MonoBehaviour
     if (collision.gameObject.CompareTag("Player"))
     {
       collision.gameObject.GetComponent<PlayerController>().CollectFish();
-      Debug.Log("Fish collected");
       Destroy(gameObject);
     }
   }

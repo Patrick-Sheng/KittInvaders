@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,23 +8,27 @@ public class PlayerController : MonoBehaviour
     private int currentHealth;
 
     [Header("Cleanse")]
-    [SerializeField] private int fishRequired = 5;
+    [SerializeField] private int maxFish = 3;
     [SerializeField] private float cleanseRadius = 3f;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private GameObject cleanseEffectPrefab;
     private int fishCount = 0;
+
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI fishText;
+
     private void Start()
     {
         currentHealth = maxHealth;
+        UpdateFishUI();
     }
 
     public void PressCleanse()
     {
-      if (fishCount >= fishRequired)
-      {
-        Debug.Log("Activating Cleanse!");
-        ActivateCleanse();
-      }
+        if (fishCount > 0)
+        {
+            ActivateCleanse();
+        }
     }
 
     public void ChangeHealth(int amount)
@@ -37,13 +42,17 @@ public class PlayerController : MonoBehaviour
 
     public void CollectFish()
     {
-        fishCount++;
-        Debug.Log($"Fish: {fishCount}/{fishRequired}");
+        if (fishCount < maxFish)
+        {
+          fishCount++;
+          UpdateFishUI();
+        }
     }
 
     private void ActivateCleanse()
     {
-        fishCount -= fishRequired;
+        fishCount--;
+        UpdateFishUI();
 
         if (cleanseEffectPrefab != null)
         {
@@ -56,6 +65,12 @@ public class PlayerController : MonoBehaviour
         {
             hit.GetComponent<Cat>()?.Cleanse();
         }
+    }
+
+    private void UpdateFishUI()
+    {
+        if (fishText != null)
+            fishText.text = $"{fishCount}/{maxFish}";
     }
 
     private void OnDrawGizmosSelected()
