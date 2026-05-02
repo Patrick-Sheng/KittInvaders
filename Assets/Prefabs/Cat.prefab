@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3628070004403865754}
   - component: {fileID: 453194861913035259}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 6828570343811025480, guid: f5d8728db3f8e0a449954cae79c405e7, type: 3}
+  m_Sprite: {fileID: 3928810282185987943, guid: 99d8e57042bab9f40912af1e112f035b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -137,4 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2a8385bad50884b8d0e261e460d13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
   moveSpeed: 1
+  spriteRenderer: {fileID: 7829107222372646248}
+  evilSprite: {fileID: 389864633012786060, guid: 5e362b21cc1c00f4189a47c63ee145a3, type: 3}
+  friendlySprite: {fileID: 6828570343811025480, guid: f5d8728db3f8e0a449954cae79c405e7, type: 3}
