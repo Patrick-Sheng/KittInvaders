@@ -309,6 +309,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  fishRequired: 2
+  cleanseRadius: 5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  cleanseEffectPrefab: {fileID: 370843482704628842, guid: 443a5485f8a5a3b43b07a97a89ff650e, type: 3}
 --- !u!1 &316152432
 GameObject:
   m_ObjectHideFlags: 0

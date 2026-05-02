@@ -45,6 +45,7 @@ public class Cat : MonoBehaviour
         currentState = CatState.Friendly;
         ApplyState();
         // TODO: trigger cleanse animation/sound here
+        
     }
 
     private void ApplyState()
