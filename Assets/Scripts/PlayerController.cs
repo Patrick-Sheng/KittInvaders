@@ -21,6 +21,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Sprite fullHeart;
     [SerializeField] private Sprite emptyHeart;
 
+    public GameOverScreen GameOverScreen;
+
+    private void GameOver()
+    {
+        GameOverScreen.Setup(ScoreManager.Instance.GetScore());
+    }
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -45,6 +52,8 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             // TODO: trigger game over
+            Time.timeScale = 0f;
+            GameOver();
         }
     }
 
