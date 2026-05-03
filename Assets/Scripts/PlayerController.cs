@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     public void PressCleanse()
     {
-        if (fishCount >= fishRequired)
+        if (fishCount > 0)
         {
             Debug.Log("Activating Cleanse!");
             ActivateCleanse();
@@ -59,14 +59,17 @@ public class PlayerController : MonoBehaviour
 
     public void CollectFish()
     {
-        fishCount++;
-        UpdateFishUI();
-        Debug.Log($"Fish: {fishCount}/{fishRequired}");
+        if (fishCount < fishRequired)
+        {
+            fishCount++;
+            UpdateFishUI();
+            Debug.Log($"Fish: {fishCount}/{fishRequired}");
+        }
     }
 
     private void ActivateCleanse()
     {
-        fishCount -= fishRequired;
+        fishCount--;
         UpdateFishUI();
 
         if (cleanseEffectPrefab != null)
