@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         currentHealth = maxHealth;
         UpdateFishUI();
         UpdateHealthUI();
